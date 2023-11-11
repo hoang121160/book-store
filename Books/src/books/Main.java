@@ -4,19 +4,20 @@
  */
 package books;
 
+import books.view.MainJFrame;
+
 /**
  *
  * @author Admin
  */
-public class Books {
+public class Main {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("Hello");
-        System.out.println("anh Hoàng");
-        System.out.println("anh Hoàng");
+       
+        new MainJFrame().setVisible(true);
     }
     
 }
