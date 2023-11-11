@@ -20,6 +20,7 @@ public class MainJFrame extends javax.swing.JFrame {
      */
     public MainJFrame() {
         initComponents();
+        setLocationRelativeTo(null);
         setTitle("Book-Store");
         ChuyenManHinhController controller =  new ChuyenManHinhController(jpnView);
         controller.setView(jpnSanPham, jlbSanPham);
@@ -77,7 +78,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jpnMenu.setBackground(new java.awt.Color(102, 102, 102));
+        jpnMenu.setBackground(new java.awt.Color(204, 204, 204));
 
         jPanel4.setBackground(new java.awt.Color(204, 102, 0));
 
