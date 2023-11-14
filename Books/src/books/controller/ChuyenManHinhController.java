@@ -8,9 +8,11 @@ import books.bean.DanhMucBean;
 import books.view.BanHangJPanel;
 import books.view.DangXuatJPanel;
 import books.view.HoaDonJPanel;
+import books.view.HoaDonNew;
 import books.view.KhachHangJPanel;
 import books.view.NhanVienJPanel;
 import books.view.SanPhamJPanel;
+import books.view.SanPhamNew;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
@@ -35,11 +37,11 @@ public class ChuyenManHinhController {
 
     public void setView(JPanel jpnItem, JLabel jlbItem) {
         kindSelected = "QuanLySanPham";
-        jpnItem.setBackground(new Color(96, 100, 191));
-        jlbItem.setBackground(new Color(96, 100, 191));
+        jpnItem.setBackground(new Color(255,204,204));
+        jlbItem.setBackground(new Color(255,204,204));
         root.removeAll();
         root.setLayout(new BorderLayout());
-        root.add(new SanPhamJPanel());
+        root.add(new SanPhamNew());
         root.validate();
         root.repaint();
     }
@@ -47,7 +49,7 @@ public class ChuyenManHinhController {
     public void setEvent(List<DanhMucBean> listItem) {
         this.listItem = listItem;
         for (DanhMucBean item : listItem) {
-        item.getJlb().addMouseListener(new LabelEvent(item.getKind(), item.getJpn(), item.getJlb()));
+            item.getJlb().addMouseListener(new LabelEvent(item.getKind(), item.getJpn(), item.getJlb()));
         }
 
     }
@@ -68,9 +70,9 @@ public class ChuyenManHinhController {
         @Override
         public void mouseClicked(MouseEvent e) {
             switch (kind) {
-                case "SanPham":
-                    node = new SanPhamJPanel();
-                    break;
+//                case "SanPham":
+//                    node = new SanPhamJPanel();
+//                    break;
                 case "KhachHang":
                     node = new KhachHangJPanel();
                     break;
@@ -81,12 +83,14 @@ public class ChuyenManHinhController {
                     node = new BanHangJPanel();
                     break;
                 case "HoaDon":
-                    node = new HoaDonJPanel();
+                    node = new HoaDonNew();
                     break;
                 case "DangXuat":
                     node = new DangXuatJPanel();
                     break;
-
+                case "SanPhamNew":
+                    node = new SanPhamNew();
+                    break;
                 default:
                     node = new BanHangJPanel();
                     break;
@@ -102,8 +106,8 @@ public class ChuyenManHinhController {
         @Override
         public void mousePressed(MouseEvent e) {
             kindSelected = kind;
-            jpnItem.setBackground(new Color(96, 100, 191));
-            jlbItem.setBackground(new Color(96, 100, 191));
+            jpnItem.setBackground(new Color(153,153,153));
+            jlbItem.setBackground(new Color(153,153,153));
         }
 
         @Override
@@ -112,15 +116,15 @@ public class ChuyenManHinhController {
 
         @Override
         public void mouseEntered(MouseEvent e) {
-            jpnItem.setBackground(new Color(96, 100, 191));
-            jlbItem.setBackground(new Color(96, 100, 191));
+            jpnItem.setBackground(new Color(153,153,153));
+            jlbItem.setBackground(new Color(153,153,153));
         }
 
         @Override
         public void mouseExited(MouseEvent e) {
             if (!kindSelected.equalsIgnoreCase(kind)) {
-                jpnItem.setBackground(new Color(76, 175, 80));
-                jlbItem.setBackground(new Color(76, 175, 80));
+                jpnItem.setBackground(new Color(255,204,204));
+                jlbItem.setBackground(new Color(255,204,204));
             }
         }
 
@@ -129,11 +133,11 @@ public class ChuyenManHinhController {
     private void setchangeBackground(String kind) {
         for (DanhMucBean item : listItem) {
             if (item.getKind().equalsIgnoreCase(kind)) {
-                item.getJpn().setBackground(new Color(96, 100, 191));
-                item.getJlb().setBackground(new Color(96, 100, 191));
+                item.getJpn().setBackground(new Color(153,153,153));
+                item.getJlb().setBackground(new Color(153,153,153));
             } else {
-                item.getJpn().setBackground(new Color(76, 175, 80));
-                item.getJlb().setBackground(new Color(76, 175, 80));
+                item.getJpn().setBackground(new Color(255,204,204));
+                item.getJlb().setBackground(new Color(255,204,204));
             }
         }
     }

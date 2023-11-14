@@ -1,17 +1,19 @@
 package books.model;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author Admin
  */
 public class SanPhamChiTiet {
 
-    private String MaSPCT;
-    private String MaTacGia;
-    private String MaSP;
-    private String MaTheLoai;
+    private int maSPCT;
+    private TacGia tacGia;
+    private SanPham sanPham;
+    private TheLoai theLoai;
     private String ten;
-    private float gia;
+    private BigDecimal gia;
     private String ngonNgu;
     private int soTrang;
     private String nhaXuatBan;
@@ -21,11 +23,11 @@ public class SanPhamChiTiet {
     public SanPhamChiTiet() {
     }
 
-    public SanPhamChiTiet(String MaSPCT, String MaTacGia, String MaSP, String MaTheLoai, String ten, float gia, String ngonNgu, int soTrang, String nhaXuatBan, int namXuatBan, int lanTaiBan) {
-        this.MaSPCT = MaSPCT;
-        this.MaTacGia = MaTacGia;
-        this.MaSP = MaSP;
-        this.MaTheLoai = MaTheLoai;
+    public SanPhamChiTiet(int maSPCT, TacGia tacGia, SanPham sanPham, TheLoai theLoai, String ten, BigDecimal gia, String ngonNgu, int soTrang, String nhaXuatBan, int namXuatBan, int lanTaiBan) {
+        this.maSPCT = maSPCT;
+        this.tacGia = tacGia;
+        this.sanPham = sanPham;
+        this.theLoai = theLoai;
         this.ten = ten;
         this.gia = gia;
         this.ngonNgu = ngonNgu;
@@ -35,36 +37,36 @@ public class SanPhamChiTiet {
         this.lanTaiBan = lanTaiBan;
     }
 
-    public String getMaSPCT() {
-        return MaSPCT;
+    public int getMaSPCT() {
+        return maSPCT;
     }
 
-    public void setMaSPCT(String MaSPCT) {
-        this.MaSPCT = MaSPCT;
+    public void setMaSPCT(int maSPCT) {
+        this.maSPCT = maSPCT;
     }
 
-    public String getMaTacGia() {
-        return MaTacGia;
+    public TacGia getTacGia() {
+        return tacGia;
     }
 
-    public void setMaTacGia(String MaTacGia) {
-        this.MaTacGia = MaTacGia;
+    public void setTacGia(TacGia tacGia) {
+        this.tacGia = tacGia;
     }
 
-    public String getMaSP() {
-        return MaSP;
+    public SanPham getSanPham() {
+        return sanPham;
     }
 
-    public void setMaSP(String MaSP) {
-        this.MaSP = MaSP;
+    public void setSanPham(SanPham sanPham) {
+        this.sanPham = sanPham;
     }
 
-    public String getMaTheLoai() {
-        return MaTheLoai;
+    public TheLoai getTheLoai() {
+        return theLoai;
     }
 
-    public void setMaTheLoai(String MaTheLoai) {
-        this.MaTheLoai = MaTheLoai;
+    public void setTheLoai(TheLoai theLoai) {
+        this.theLoai = theLoai;
     }
 
     public String getTen() {
@@ -75,11 +77,11 @@ public class SanPhamChiTiet {
         this.ten = ten;
     }
 
-    public float getGia() {
+    public BigDecimal getGia() {
         return gia;
     }
 
-    public void setGia(float gia) {
+    public void setGia(BigDecimal gia) {
         this.gia = gia;
     }
 
@@ -122,6 +124,19 @@ public class SanPhamChiTiet {
     public void setLanTaiBan(int lanTaiBan) {
         this.lanTaiBan = lanTaiBan;
     }
-    
-    
+
+    public void setTacGia(String tenTacGia) {
+        if (this.tacGia == null) {
+            this.tacGia = new TacGia();
+        }
+        this.tacGia.setTenTacGia(tenTacGia);
+    }
+
+    public void setTheLoai(String tenTheLoai) {
+        if (this.theLoai == null) {
+            this.theLoai = new TheLoai();
+        }
+        this.theLoai.setTenTheLoai(tenTheLoai);
+    }
+
 }
