@@ -12,10 +12,10 @@ import java.time.LocalDateTime;
  * @author Admin
  */
 public class SanPham {
-     private int maSP;
+
+    private int maSP;
     private String ten;
     private int soLuong;
-    private BigDecimal donGia;
     private LocalDateTime createAt;
     private String createBy;
     private LocalDateTime updateAt;
@@ -29,7 +29,6 @@ public class SanPham {
         this.maSP = maSP;
         this.ten = ten;
         this.soLuong = soLuong;
-        this.donGia = donGia;
         this.createAt = createAt;
         this.createBy = createBy;
         this.updateAt = updateAt;
@@ -59,14 +58,6 @@ public class SanPham {
 
     public void setSoLuong(int soLuong) {
         this.soLuong = soLuong;
-    }
-
-    public BigDecimal getDonGia() {
-        return donGia;
-    }
-
-    public void setDonGia(BigDecimal donGia) {
-        this.donGia = donGia;
     }
 
     public LocalDateTime getCreateAt() {
@@ -108,5 +99,5 @@ public class SanPham {
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
     }
-    
+
 }

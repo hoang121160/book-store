@@ -119,6 +119,50 @@ public class SanPhamChiTietService {
         }
         return null;
     }
+    public List<SanPhamChiTiet> getSanPhamChiTietByMaSP(int maSP) {
+    try {
+        List<SanPhamChiTiet> list = new ArrayList<>();
+        Connection conn = DBcontext.getConnection();
+        String sql = "SELECT\n"
+                + "    spct.maSPCT,\n"
+                + "    tg.ten AS tenTacGia,\n"
+                + "    tl.ten AS tenTheLoai,\n"
+                + "    spct.ten,\n"
+                + "    spct.gia,\n"
+                + "    spct.ngonNgu,\n"
+                + "    spct.soTrang,\n"
+                + "    spct.nhaXuatBan,\n"
+                + "    spct.namXuatBan,\n"
+                + "    spct.lanTaiBan\n"
+                + "FROM\n"
+                + "    SanPhamChiTiet spct\n"
+                + "    INNER JOIN TacGia tg ON spct.MaTacGia = tg.maTacGia\n"
+                + "    INNER JOIN TheLoai tl ON spct.MaTheLoai = tl.MaTheLoai\n"
+                + "WHERE\n"
+                + "    spct.maSPCT = ?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, maSP);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            SanPhamChiTiet spct = new SanPhamChiTiet();
+            spct.setMaSPCT(rs.getInt("maSPCT"));
+            spct.setTacGia(rs.getString("tenTacGia"));
+            spct.setTheLoai(rs.getString("tenTheLoai"));
+            spct.setTen(rs.getString("ten"));
+            spct.setGia(rs.getBigDecimal("gia"));
+            spct.setNgonNgu(rs.getString("ngonNgu"));
+            spct.setSoTrang(rs.getInt("soTrang"));
+            spct.setNhaXuatBan(rs.getString("nhaXuatBan"));
+            spct.setNamXuatBan(rs.getInt("namXuatBan"));
+            spct.setLanTaiBan(rs.getInt("lanTaiBan"));
+            list.add(spct);
+        }
+        return list;
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return null;
+}
 
     public void addSanPhamChiTiet(SanPhamChiTiet sp) {
         try {

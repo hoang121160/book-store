@@ -22,6 +22,9 @@ public class SanPhamChiTietController {
     public List<SanPhamChiTiet> getAllSanPhamChiTiet() {
         return sanPhamChiTietService.getAllSanPhamChiTiet();
     }
+    public List<SanPhamChiTiet> getSanPhamChiTietByMaSP(int maSP) {
+        return sanPhamChiTietService.getSanPhamChiTietByMaSP(maSP);
+    }
 
     public void addSanPhamChiTiet(SanPhamChiTiet sanPhamChiTiet) {
         sanPhamChiTietService.addSanPhamChiTiet(sanPhamChiTiet);

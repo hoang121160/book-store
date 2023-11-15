@@ -29,6 +29,7 @@ public class HoaDonNew extends javax.swing.JPanel {
         service = new HoaDonService();
         sanPhamChiTietController = new SanPhamChiTietController();
         loadHoaDonChiTietToTable();
+        loadSanPhamChiTietToTable();
     }
 
     public void loadHoaDonChiTietToTable() {
