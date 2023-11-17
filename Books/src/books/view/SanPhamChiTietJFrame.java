@@ -6,11 +6,11 @@ package books.view;
 
 import books.controller.SanPhamChiTietController;
 import books.model.SanPhamChiTiet;
-import java.awt.BorderLayout;
-import java.awt.ScrollPane;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -22,40 +22,71 @@ public class SanPhamChiTietJFrame extends javax.swing.JFrame {
     /**
      * Creates new form SanPhamChiTietJFrame
      */
+    private SanPhamJPanel sanPhamJPanel;
     private SanPhamChiTietController sanPhamChiTietController;
 
     public SanPhamChiTietJFrame(int maSP) {
         sanPhamChiTietController = new SanPhamChiTietController();
+        sanPhamJPanel = new SanPhamJPanel();
         initComponents();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         loadSanPhamChiTietToTable(maSP);
-        
 
     }
 
     public void loadSanPhamChiTietToTable(int maSP) {
-    // Lấy dữ liệu chi tiết sản phẩm từ maSP
-    List<SanPhamChiTiet> sanPhamChiTietList = sanPhamChiTietController.getSanPhamChiTietByMaSP(maSP);
-    
-    DefaultTableModel dtm = (DefaultTableModel) tblSanPhamChiTiet.getModel();
-    dtm.setRowCount(0); // Xóa dữ liệu cũ trong bảng
-    
-    for (SanPhamChiTiet sanPhamChiTiet : sanPhamChiTietList) {
-        Object[] rowData = new Object[10];
-        rowData[0] = sanPhamChiTiet.getMaSPCT();
-        rowData[1] = sanPhamChiTiet.getTacGia();
-        rowData[2] = sanPhamChiTiet.getTheLoai();
-        rowData[3] = sanPhamChiTiet.getTen();
-        rowData[4] = sanPhamChiTiet.getGia();
-        rowData[5] = sanPhamChiTiet.getNgonNgu();
-        rowData[6] = sanPhamChiTiet.getSoTrang();
-        rowData[7] = sanPhamChiTiet.getNhaXuatBan();
-        rowData[8] = sanPhamChiTiet.getNamXuatBan();
-        rowData[9] = sanPhamChiTiet.getLanTaiBan();
-        dtm.addRow(rowData);
+        // Lấy dữ liệu chi tiết sản phẩm từ maSP
+        List<SanPhamChiTiet> sanPhamChiTietList = sanPhamChiTietController.getSanPhamChiTietByMaSP(maSP);
+
+        DefaultTableModel dtm = (DefaultTableModel) tblSanPhamChiTiet.getModel();
+        dtm.setRowCount(0); // Xóa dữ liệu cũ trong bảng
+        int stt = 1;
+        for (SanPhamChiTiet sanPhamChiTiet : sanPhamChiTietList) {
+            Object[] rowData = new Object[11];
+            rowData[0] = stt++;
+            rowData[1] = sanPhamChiTiet.getMaSPCT();
+            rowData[2] = sanPhamChiTiet.getTacGia();
+            rowData[3] = sanPhamChiTiet.getTheLoai();
+            rowData[4] = sanPhamChiTiet.getTen();
+            rowData[5] = sanPhamChiTiet.getGia();
+            rowData[6] = sanPhamChiTiet.getNgonNgu();
+            rowData[7] = sanPhamChiTiet.getSoTrang();
+            rowData[8] = sanPhamChiTiet.getNhaXuatBan();
+            rowData[9] = sanPhamChiTiet.getNamXuatBan();
+            rowData[10] = sanPhamChiTiet.getLanTaiBan();
+            dtm.addRow(rowData);
+        }
     }
-}
+
+    private void selectRow(int i) {
+        DefaultTableModel tblModel = (DefaultTableModel) tblSanPhamChiTiet.getModel();
+
+        // Tham chiếu đến các thành phần trong JPanel
+        SanPhamJPanel sanPhamJPanel = new SanPhamJPanel(); // Thay thế getSanPhamJPanel() bằng phương thức lấy đối tượng JPanel của bạn
+        JTextField txtMaSPCT = sanPhamJPanel.getTxtMaSPCT();
+        JComboBox cboTheLoai = sanPhamJPanel.getCboTheLoai();
+        JComboBox cboTacGia = sanPhamJPanel.getCboTacGia();
+        JTextField txtTen = sanPhamJPanel.getTxtTen();
+        JTextField txtGia = sanPhamJPanel.getTxtGia();
+        JTextField txtNgonNgu = sanPhamJPanel.getTxtNgonNgu();
+        JTextField txtSoTrang = sanPhamJPanel.getTxtSoTrang();
+        JTextField txtNhaXuatBan = sanPhamJPanel.getTxtNhaXuatBan();
+        JTextField txtNamXuatBan = sanPhamJPanel.getTxtNamXuatBan();
+        JTextField txtLanTaiBan = sanPhamJPanel.getTxtLanTaiBan();
+
+        // Truyền dữ liệu từ dòng được chọn trong JTable sang các JTextField trên JPanel
+        txtMaSPCT.setText(tblModel.getValueAt(i, 0).toString());
+        cboTacGia.setSelectedItem(tblModel.getValueAt(i, 1).toString());
+        cboTheLoai.setSelectedItem(tblModel.getValueAt(i, 2).toString());
+        txtTen.setText(tblModel.getValueAt(i, 3).toString());
+        txtGia.setText(tblModel.getValueAt(i, 4).toString());
+        txtNgonNgu.setText(tblModel.getValueAt(i, 5).toString());
+        txtSoTrang.setText(tblModel.getValueAt(i, 6).toString());
+        txtNhaXuatBan.setText(tblModel.getValueAt(i, 7).toString());
+        txtNamXuatBan.setText(tblModel.getValueAt(i, 8).toString());
+        txtLanTaiBan.setText(tblModel.getValueAt(i, 9).toString());
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -86,13 +117,13 @@ public class SanPhamChiTietJFrame extends javax.swing.JFrame {
 
         tblSanPhamChiTiet.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Mã SPCT", "Tác giả", "Thể loại", "Tên", "Giá", "Ngôn ngữ", "Số trang", "Nhà xuất bản", "Năm xuất bản", "Lần tái bản"
+                "STT", "Mã SPCT", "Tác giả", "Thể loại", "Tên", "Giá", "Ngôn ngữ", "Số trang", "Nhà xuất bản", "Năm xuất bản", "Lần tái bản"
             }
         ));
         tblSanPhamChiTiet.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -165,10 +196,11 @@ public class SanPhamChiTietJFrame extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnXoa)
-                    .addComponent(jLabel2)
-                    .addComponent(lblCount, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblCount, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnXoa)
+                        .addComponent(jLabel2)))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
@@ -191,6 +223,8 @@ public class SanPhamChiTietJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblSanPhamChiTietMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSanPhamChiTietMouseClicked
+        int i = tblSanPhamChiTiet.getSelectedRow();
+        selectRow(i);
     }//GEN-LAST:event_tblSanPhamChiTietMouseClicked
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed

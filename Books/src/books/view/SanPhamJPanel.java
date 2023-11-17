@@ -9,11 +9,12 @@ import books.model.SanPham;
 import books.controller.SanPhamController;
 import books.controller.TacGiaController;
 import books.controller.TheLoaiController;
-import books.model.SanPhamChiTiet;
 import books.model.TacGia;
 import books.model.TheLoai;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -29,6 +30,7 @@ public class SanPhamJPanel extends javax.swing.JPanel {
     private SanPhamController sanPhamController;
     private TheLoaiController theLoaiController;
     private TacGiaController tacGiaController;
+    private SanPhamChiTietJFrame sanPhamChiTietJFrame;
 
     public SanPhamJPanel() {
         initComponents();
@@ -78,7 +80,43 @@ public class SanPhamJPanel extends javax.swing.JPanel {
         }
     }
 
-    
+    public JTextField getTxtMaSPCT() {
+        return txtMaSPCT;
+    }
+    public JComboBox getCboTheLoai(){
+        return cboTheLoai;
+    }
+    public JComboBox getCboTacGia(){
+        return cboTacGia;
+    }
+
+    public JTextField getTxtTen() {
+        return txtTen;
+    }
+
+    public JTextField getTxtGia() {
+        return txtGia;
+    }
+
+    public JTextField getTxtNgonNgu() {
+        return txtNgonNgu;
+    }
+
+    public JTextField getTxtSoTrang() {
+        return txtSoTrang;
+    }
+
+    public JTextField getTxtNhaXuatBan() {
+        return txtNhaXuatBan;
+    }
+
+    public JTextField getTxtNamXuatBan() {
+        return txtNamXuatBan;
+    }
+
+    public JTextField getTxtLanTaiBan() {
+        return txtLanTaiBan;
+    }
 
 //    public void loadTheLoaiToTable() {
 //        List<TheLoai> theLoai = theLoaiController.getAllTheLoai();
@@ -356,7 +394,7 @@ public class SanPhamJPanel extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Sản phẩm", jPanel1);
 
-        jLabel1.setText("Mã sản phẩm:");
+        jLabel1.setText("Mã SPCT:");
 
         txtMaSPCT.setEditable(false);
 
@@ -704,12 +742,12 @@ public class SanPhamJPanel extends javax.swing.JPanel {
 
     private void tblSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSPMouseClicked
         if (evt.getClickCount() == 1) {
-        int row = tblSP.getSelectedRow();
-        int maSP = (int) tblSP.getValueAt(row, 1);
+            int row = tblSP.getSelectedRow();
+            int maSP = (int) tblSP.getValueAt(row, 1);
 
-        SanPhamChiTietJFrame chiTietJFrame = new SanPhamChiTietJFrame(maSP);
-        chiTietJFrame.setVisible(true);
-    }
+            SanPhamChiTietJFrame chiTietJFrame = new SanPhamChiTietJFrame(maSP);
+            chiTietJFrame.setVisible(true);
+        }
     }//GEN-LAST:event_tblSPMouseClicked
 
     private void tblSPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSPMouseEntered
@@ -734,7 +772,6 @@ public class SanPhamJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -753,22 +790,17 @@ public class SanPhamJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTabbedPane jTabbedPane5;
     private javax.swing.JTabbedPane jTabbedPane6;
     private javax.swing.JTabbedPane jTabbedPane7;
-    private javax.swing.JTabbedPane jTabbedPane8;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
     private javax.swing.JTable tblSP;
     private javax.swing.JTable tblSanPham;
-    private javax.swing.JTable tblSanPham1;
     private javax.swing.JTextField txtGia;
     private javax.swing.JTextField txtLanTaiBan;
     private javax.swing.JTextField txtMaSPCT;

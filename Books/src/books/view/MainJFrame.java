@@ -109,15 +109,15 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jlbHoaDon.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlbHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/books/icons/Bell.png"))); // NOI18N
-        jlbHoaDon.setText("Hóa đơn");
+        jlbHoaDon.setText("Bán hàng");
 
         javax.swing.GroupLayout jpnHoaDonLayout = new javax.swing.GroupLayout(jpnHoaDon);
         jpnHoaDon.setLayout(jpnHoaDonLayout);
         jpnHoaDonLayout.setHorizontalGroup(
             jpnHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnHoaDonLayout.createSequentialGroup()
+            .addGroup(jpnHoaDonLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(jlbHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlbHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpnHoaDonLayout.setVerticalGroup(
@@ -132,7 +132,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jlbBanHang.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlbBanHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/books/icons/banhang.png"))); // NOI18N
-        jlbBanHang.setText("Bán hàng");
+        jlbBanHang.setText("Hóa đơn");
 
         javax.swing.GroupLayout jpnBanHangLayout = new javax.swing.GroupLayout(jpnBanHang);
         jpnBanHang.setLayout(jpnBanHangLayout);

@@ -96,7 +96,6 @@ public class SanPhamNew extends javax.swing.JPanel {
     }
 
     private void selectRow(int i) {
-        SanPhamChiTiet sp = new SanPhamChiTiet();
         DefaultTableModel tblModel = (DefaultTableModel) tblSanPhamChiTiet.getModel();
         txtMaSPCT.setText(tblModel.getValueAt(i, 0).toString());
         cboTacGia.setSelectedItem(tblModel.getValueAt(i, 1).toString());
